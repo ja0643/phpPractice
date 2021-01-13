@@ -31,9 +31,6 @@
 </head>
 <body>
 <?php
-    $s = mysqli_connect("127.0.0.1", "root", "qawsedrf12#$") or die("실패입니다.");
-    mysqli_select_db($s,"test_db");
-    
     $no = $_POST["no"];
     $result = mysqli_query($s, "SELECT no, category, title, contents, writer, hits, write_date FROM tb_board WHERE no='".$no."'");
 
@@ -63,8 +60,10 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="javascript:boardUpdate();" class="btn save">수정</a>
-            <a href="boardList.php" class="btn list">목록</a>
+            <div class="btn_wrap">
+                <a href="javascript:boardUpdate();" class="btn save">수정</a>
+                <a href="boardList.php" class="btn list">목록</a>
+            </div>
         </form>
     </div>
 </body>

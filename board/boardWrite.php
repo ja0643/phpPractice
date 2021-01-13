@@ -60,8 +60,10 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="javascript:boardInsert()" class="btn save">저장</a>
-            <a href="boardList.php" class="btn list">목록</a>
+            <div class="btn_wrap">
+                <a href="javascript:boardInsert()" class="btn save">저장</a>
+                <a href="boardList.php" class="btn list">목록</a>
+            </div>
         </form>
     </div>
 </body>

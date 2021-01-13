@@ -15,11 +15,6 @@
 </head>
 <body>
 <?php
-    $s = mysqli_connect("127.0.0.1", "root", "qawsedrf12#$") or die("실패입니다.");
-    mysqli_select_db($s,"test_db");
-
-    //$result = mysqli_query($s, "SELECT no, category, title, contents, hits, writer, write_date FROM tb_board ORDER BY no DESC");
-    
     //페이징
     $current_page = 1;
     if (isset($_GET["current_page"])) {
@@ -58,8 +53,11 @@
 
     $total_block = ceil($total_page / $rowPerPage);
     $limit = ($current_page-1)*$rowPerPage;
-
-    $page_sql = "SELECT no, category, title, contents, hits, writer, date_format(write_date,'%Y-%m-%d') as write_date FROM tb_board ORDER BY no DESC LIMIT ".$limit.",".$rowPerPage."";
+    
+    $sql1 = "SET @row_num=0;";
+    $page_sql = "SELECT (@row_num:=@row_num+1) AS rownum, no, category, title, contents, hits, writer, date_format(write_date,'%Y-%m-%d') as write_date FROM tb_board ORDER BY rownum DESC LIMIT ".$limit.",".$rowPerPage."";
+    
+    mysqli_query($s, $sql1);
     $result = mysqli_query($s, $page_sql);
 
 
@@ -91,7 +89,7 @@
             <tr>
                 <td class="first tac">
                     <?php 
-                        echo $row["no"]; 
+                        echo $row["rownum"]; 
                     ?>
                 </td>
                 <td>
@@ -144,12 +142,13 @@
             ?>
            
     </div>
-    <?php
-      if(isset($_SESSION['user_id'])){
-          echo "<a href='boardWrite.php' class='btn save'>글쓰기</a>";
-      }     
-    ?>
-    
+    <div class="btn_wrap">
+        <?php
+        if(isset($_SESSION['user_id'])){
+            echo "<a href='boardWrite.php' class='btn save'>글쓰기</a>";
+        }     
+        ?>
+    </div>
 </div>
 
 </body>

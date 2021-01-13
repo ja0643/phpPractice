@@ -1,8 +1,5 @@
 <?php include '../layout/header.php'?>
 <?php
-    $s = mysqli_connect("127.0.0.1", "root", "qawsedrf12#$") or die("실패입니다.");
-    mysqli_select_db($s,"test_db");
-
     $id = $_POST['id'];
     $password = $_POST['password'];
 

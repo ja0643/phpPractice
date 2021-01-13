@@ -7,17 +7,22 @@
     <?php include '../layout/header.php'?>
     
     <script>
-
         function boardModify(){
             var form = document.frm1;
             form.submit();
+        }
+
+        function boardDelete(){
+            if(confirm("삭제하시겠습니까?")){
+                var form = document.frm1;
+                form.action="boardDelete.php";
+                form.submit();
+            }
         }
     </script>
 </head>
 <body>
 <?php
-    $s = mysqli_connect("127.0.0.1", "root", "qawsedrf12#$") or die("실패입니다.");
-    mysqli_select_db($s,"test_db");
     
     $no = $_GET["no"];
     $result = mysqli_query($s, "SELECT no, category, title, contents, writer, hits, write_date FROM tb_board WHERE no='".$no."'");
@@ -52,14 +57,17 @@
                     </tr>
                 </tbody>
             </table>
-            <?php 
-                if(isset($_SESSION['user_id'])){
-                    if($_SESSION['user_name'] == $con['writer']){
-                        echo "<a href='javascript:boardModify();' class='btn save'>수정</a>";
+            <div class="btn_wrap">
+                <?php 
+                    if(isset($_SESSION['user_id'])){
+                        if($_SESSION['user_name'] == $con['writer']){
+                            echo "<a href='javascript:boardModify();' class='btn save'>수정</a> ";
+                            echo "<a href='javascript:boardDelete();' class='btn del'>삭제</a>";
+                        }
                     }
-                }
-            ?>
-            <a href="boardList.php" class="btn list">목록</a>
+                ?>
+                <a href="boardList.php" class="btn list">목록</a>
+            </div>
         </form>
     </div>
 </body>

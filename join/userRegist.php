@@ -13,7 +13,6 @@
        
     </style>
     <script>
-
         function userRegist(){
             
             var id = $("#id");
@@ -60,13 +59,41 @@
             }
         }
 
+        function userCk(){
+            if($('#id').val() == ''){
+                alert("Id를 입력해주세요.");
+            }else{
+                $.ajax({
+                    type:"post",
+                    url:"userCk.php",
+                    data:$('#fuser').serialize(),
+                    dataType:"json",
+                    success: function(json){
+                        if(json.res == 'success'){
+                            alert("사용가능한 ID입니다.");
+                        }else{
+                            alert("사용중인 ID입니다.");
+                            $('#id').focus();
+                            return;
+                        }
+                    }, 
+                    // success: function(data){
+                    //     alert(data);    
+                    // }, 
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(jqXHR.responseText);
+                    }
+                });
+            }
+        }
+
     </script>
 </head>
 <body>
     
     <div class="wrap">
         <h2>회원가입 정보입력</h2>
-        <form action="userProcess.php" method="post" name="fuser">
+        <form action="userProcess.php" method="post" name="fuser" id="fuser">
             <table>
                 <caption>회원 정보입력</caption>
                 <colgroup>
@@ -81,7 +108,8 @@
                     </tr>
                     <tr>
                         <th><label for="id">아이디</label></th>
-                        <td><input type="text" id="id" name="id"></td>
+                        <td><input type="text" id="id" name="id"><a href="javascript:userCk();" class="button save">중복확인</a></td>
+                        
                     </tr>
                     <tr>
                         <th><label for="password">비밀번호</label></th>
@@ -119,8 +147,9 @@
                     </tr>
                 </tbody>
             </table> 
-
-            <a href="javascript:userRegist();" class="btn save">회원가입</a>
+            <div class="btn_wrap">
+                <a href="javascript:userRegist();" class="btn save">회원가입</a>
+            </div>
         </form>
     </div>
 </body>
