@@ -1,0 +1,26 @@
+body, p, ul, li, a {margin:0; text-decoration: none; list-style:none; color: #000;}
+input, select{height: 24px;}
+.hidden, caption{text-indent:-9999px; width: 0; height: 0; font-size: 0;}
+
+.wrap{width: 800px; margin: 30px auto;}
+
+a.btn{display: block; float: right; margin-top: 10px; border-radius: 20px; padding: 6px 10px;}
+a.save{background-color: #126DCB; color: #fff;}
+a.list{background-color: #eee; color: #000}
+
+
+table{border-collapse:collapse; width: 100%; }
+
+table.list{margin-top: 10px; border-top: 2px solid #28669C;} 
+table.list thead th{text-align: center; padding: 10px 0; background-color: #E3EEFB; border-bottom: 1px solid #B7C8D7;}
+table.list tbody tr td{border-bottom: 1px solid #E2E2E2; padding: 10px 0;}
+table.list tbody td.tac{text-align: center}
+
+table.view{border-top: 2px solid #28669C}
+table.view tbody th, table.view tbody td{border-bottom: 1px solid #B7C8D7; padding: 6px;}
+table.view tbody th{background-color: #E3EEFB;}
+
+table.write{border-top: 2px solid #28669C}
+table.write tbody th, table.write tbody td{border-bottom: 1px solid #B7C8D7; padding: 6px;}
+table.write tbody td input, table.write tbody td textarea{width: 100%;}
+table.write tbody th{background-color: #E3EEFB;}
