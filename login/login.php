@@ -7,8 +7,11 @@
     <?php include '../layout/header.php'?>
     <style>
         h2{text-align: center;}
-        .wrap{width: 400px;}
-        
+        .wrap{width: 400px; background-color: #eee; padding: 40px 20px 50px;}
+        table{width: 80%; margin: 10px auto;}
+        table input{width: 170px;}
+        .btn_wrap{text-align: center; float: none;}
+        a.btn{padding: 10px 58px;}
     </style>
     <script>
         function login(){
@@ -53,8 +56,9 @@
                     </tr>
                 </tbody>
             </table>
-                
-            <a href="javascript:login();" class="btn save">로그인</a>
+            <div class="btn_wrap">
+                <a href="javascript:login();" class="btn save">로그인</a>
+            </div>
         </form>
     </div>
 </body>

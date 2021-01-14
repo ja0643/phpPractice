@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>메인</title>
     <link type="text/css" rel="stylesheet" href="css/common.css">
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <?php
@@ -32,7 +32,7 @@
 
         <?php 
             if(isset($_SESSION['user_id'])){
-                echo "<h4>".$_SESSION['user_id']."님 환영합니다.</h4>";
+                echo "<h4>".$_SESSION['user_name']."님 환영합니다.</h4>";
                 echo "<a href='javascript:logOut();'>로그아웃</a>";
             }else{
                 echo "<h4>로그인을 해주세요</h4>";
